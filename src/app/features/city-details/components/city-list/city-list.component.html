@@ -1,0 +1,45 @@
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="menu-icon material-icons">menu</span>
+          City Management
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="back">
+        <div class="example-spacer">
+          <button mat-raised-button style="background-color: rgb(12, 141, 12); color: #ffffff;">
+            <span class="material-icons">add</span> Add City
+          </button>
+        </div>
+      </div>
+  
+      <div id="demo-container" class="container-fluid">
+        <angular-slickgrid gridId="grid1"
+                           [columnDefinitions]="columnDefinitions1"
+                           [gridOptions]="gridOptions1"
+                           [dataset]="dataset1"
+                           [dataset]="getPaginatedData()">
+        </angular-slickgrid>
+<!-- 
+        <div class="pagination">
+          <button mat-button color="primary" (click)="onPreviousPage()" [disabled]="page === 1">Previous</button>
+          <span>{{ page }} / {{ totalPages }}</span>
+          <button mat-button color="primary" (click)="onNextPage()" [disabled]="page === totalPages">Next</button>
+        </div>
+  
+        <button mat-button color="primary" (click)="save()" style="color: #ffffff;">Save</button> -->
+
+        <ul class="pagination">
+            <mat-paginator
+              [length]="dataset1.length"
+              [pageSize]="pageSize"
+              [pageIndex]="currentPage - 1"
+              [pageSizeOptions]="[10, 20, 50]"
+              (page)="pageChange($event.pageIndex + 1)"
+            ></mat-paginator>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
